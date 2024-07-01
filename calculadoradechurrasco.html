@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Churrasco</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+    />
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url(churrasco.jpg);
+        background-size: cover;
+        background-position: center;
+        filter: blur(10px);
+        z-index: -1;
+      }
+
+      .container {
+        width: 80%;
+        max-width: 700px;
+        background-color: rgba(255, 255, 255, 0.847);
+        padding: 20px;
+        border: 1px solid #cccccc;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      h1 {
+        margin: 20px 0;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      label {
+        margin-top: 10px;
+      }
+
+      input {
+        padding: 5px;
+        margin: 5px 0;
+        width: 100px;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #e99b14;
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+
+      button:hover {
+        background-color: #4cae4ca8;
+      }
+
+      #resultado {
+        background-color: rgba(255, 255, 255, 0.945);
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        margin-top: 20px;
+        width: 96%;
+      }
+
+      #resultado h2 {
+        text-align: center;
+      }
+
+      #resultado p {
+        margin: 10px 0;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="background"></div>
+    <div class="container">
+      <h1>Calculadora de Churrasco</h1>
+      <form id="churrascoForm">
+        <label for="homens">Homens</label>
+        <input type="number" id="homens" min="0" value="0" />
+
+        <label for="mulheres">Mulheres</label>
+        <input type="number" id="mulheres" min="0" value="0" />
+
+        <label for="criancas">Crianças</label>
+        <input type="number" id="criancas" min="0" value="0" />
+
+        <button type="button" onclick="calcular()">Calcular</button>
+      </form>
+      <div id="resultado">
+        <h2>Quantidade de Ingredientes</h2>
+        <p id="carneBovina">Carne Bovina: 0 kg</p>
+        <p id="frango">Frango: 0 kg</p>
+        <p id="linguica">Linguiça: 0 kg</p>
+        <p id="refrigerante">Refrigerante: 0 L</p>
+        <p id="cerveja">Cerveja: 0 L</p>
+      </div>
+    </div>
+    <script>
+      function calcular() {
+        const homens = parseInt(document.getElementById("homens").value);
+        const mulheres = parseInt(document.getElementById("mulheres").value);
+        const criancas = parseInt(document.getElementById("criancas").value);
+        const carneBovina =
+          (homens * 500 + mulheres * 300 + criancas * 200) / 1000;
+        const frango = (homens * 200 + mulheres * 200 + criancas * 100) / 1000;
+        const linguica =
+          (homens * 200 + mulheres * 200 + criancas * 200) / 1000;
+        const refrigerante =
+          (homens * 300 + mulheres * 400 + criancas * 200) / 1000;
+        const cerveja = (homens * 800 + mulheres * 500) / 1000;
+        document.getElementById(
+          "carneBovina"
+        ).textContent = `Carne Bovina: ${carneBovina.toFixed(2)} kg`;
+        document.getElementById(
+          "frango"
+        ).textContent = `Frango: ${frango.toFixed(2)} kg`;
+        document.getElementById(
+          "linguica"
+        ).textContent = `Linguiça: ${linguica.toFixed(2)} kg`;
+        document.getElementById(
+          "refrigerante"
+        ).textContent = `Refrigerante: ${refrigerante.toFixed(2)} L`;
+        document.getElementById(
+          "cerveja"
+        ).textContent = `Cerveja: ${cerveja.toFixed(2)} L`;
+      }
+    </script>
+  </body>
+</html>
